@@ -3,6 +3,7 @@ import { faArrowRight, faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { getTokenData, roleRoutes } from '../../library/utils/constants'
 
 function LoginComponent() {
     const navigate = useNavigate()
@@ -79,7 +80,9 @@ function LoginComponent() {
             console.log('✅ Login successful:', response.data.token)
             if(response.data.token.length > 0){
                 sessionStorage.setItem('token', response.data.token)
-                navigate('/dash')
+                const decoded = getTokenData()
+                sessionStorage.setItem('role', decoded.role_id)
+                navigate(roleRoutes[decoded.role_id])
             }
         } catch (error) {
             console.error('Login failed:', error)

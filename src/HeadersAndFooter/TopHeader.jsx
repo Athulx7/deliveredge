@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { faSackDollar, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+import UserDropDown from './UserDropDown'
 
 function TopHeader() {
     const [showMobileSearch, setShowMobileSearch] = useState(false)
@@ -36,7 +37,7 @@ function TopHeader() {
                 )}
 
                 <div className="flex items-center">
-                    User Profile
+                    <UserDropDown />
                 </div>
             </div>
         </>
